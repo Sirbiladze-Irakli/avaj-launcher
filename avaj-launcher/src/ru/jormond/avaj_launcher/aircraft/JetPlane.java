@@ -8,9 +8,6 @@ import java.util.Map;
 
 public class JetPlane extends Aircraft implements Flyable {
 
-	private static final int LONGITUDE = 0;
-	private static final int LATITUDE = 1;
-	private static final int HEIGHT = 2;
 	private WeatherTower weatherTower;
 	private Map<String, String> message = new HashMap<>() {
 		{
@@ -21,14 +18,6 @@ public class JetPlane extends Aircraft implements Flyable {
 			put("LANDED", "LANDED");
 		}
 	};
-	// Изменение положения в зависимости от погоды
-	// Первое значение долгота(Longitude)
-	// Второе значение широта(Latitude)
-	// Третье значение высота(Height)
-	private int[] positionInSun = new int[]{0, 10, 2};
-	private int[] positionInRain = new int[]{0, 5, 0};
-	private int[] positionInFog = new int[]{0, 1, 0};
-	private int[] positionInSnow = new int[]{0, 0, -7};
 
 	protected JetPlane(String name, Coordinates coordinates) {
 		super(name, coordinates);
@@ -36,9 +25,9 @@ public class JetPlane extends Aircraft implements Flyable {
 
 	@Override
 	public void updateConditions() {
-		String weather = this.newCoordinates(weatherTower.getWeather(this.coordinates));
-		System.out.println("JetPlane#" + this.name + "(" + this.id + "): " + message.get(weather));
-		if (weather.equals("LANDED")) {
+		String condition = this.newCoordinates(weatherTower.getWeather(this.coordinates), AircraftTypes.JETPLANE);
+		System.out.println("JetPlane#" + this.name + "(" + this.id + "): " + message.get(condition));
+		if (condition.equals("LANDED")) {
 			System.out.println("JetPlane#" + this.name + "(" + this.id + "): landing.");
 			System.out.println("Current coordinates: Longtitude: [" + this.coordinates.getLongitude()
 					+ "] Latitude: [" + this.coordinates.getLatitude()
@@ -57,32 +46,4 @@ public class JetPlane extends Aircraft implements Flyable {
 		System.out.println("Tower says: JetPlane#" + this.name + "(" + this.id + ")" + " registered to weather tower.");
 	}
 
-	private String newCoordinates(String weather) {
-		int height = this.coordinates.getHeight();
-		int[] changePosition = null;
-
-		if (weather.equals("SUN")) {
-			changePosition = positionInSun;
-		} else if (weather.equals("RAIN")) {
-			changePosition = positionInRain;
-		} else if (weather.equals("FOG")) {
-			changePosition = positionInFog;
-		} else if (weather.equals("SNOW"))
-			changePosition = positionInSnow;
-
-		try  {
-			height += changePosition[HEIGHT];
-		} catch (NullPointerException e) {
-			e.printStackTrace();
-		}
-		if (height > 100)
-			height = 100;
-
-		this.coordinates = new Coordinates(this.coordinates.getLongitude() + changePosition[LONGITUDE],
-				this.coordinates.getLatitude() + changePosition[LATITUDE], height);
-
-		if (height <= 0)
-			return "LANDED";
-		return weather;
-	}
 }
