@@ -1,6 +1,7 @@
 package ru.jormond.avaj_launcher.aircraft;
 
 import ru.jormond.avaj_launcher.Flyable;
+import ru.jormond.avaj_launcher.Simulator;
 import ru.jormond.avaj_launcher.WeatherTower;
 
 import java.util.HashMap;
@@ -26,14 +27,14 @@ public class Helicopter extends Aircraft implements Flyable {
 	@Override
 	public void updateConditions() {
 		String condition = this.newCoordinates(weatherTower.getWeather(this.coordinates), AircraftTypes.HELICOPTER);
-		System.out.println("Helicopter#" + this.name + "(" + this.id + "): " + message.get(condition));
+		Simulator.writer.println("Helicopter#" + this.name + "(" + this.id + "): " + message.get(condition));
 		if (condition.equals("LANDED")) {
-			System.out.println("Helicopter#" + this.name + "(" + this.id + "): landing.");
-			System.out.println("Current coordinates: Longtitude: [" + this.coordinates.getLongitude()
+			Simulator.writer.println("Helicopter#" + this.name + "(" + this.id + "): landing.");
+			Simulator.writer.println("Current coordinates: Longtitude: [" + this.coordinates.getLongitude()
 					+ "] Latitude: [" + this.coordinates.getLatitude()
 					+ "] Height: [" + this.coordinates.getHeight() + "]");
 			this.weatherTower.unregister(this);
-			System.out.println("Tower says: Helicopter#" + this.name + "(" + this.id + ")"
+			Simulator.writer.println("Tower says: Helicopter#" + this.name + "(" + this.id + ")"
 					+ " unregistered from weather tower.");
 		}
 	}
@@ -43,7 +44,7 @@ public class Helicopter extends Aircraft implements Flyable {
 	public void registerTower(WeatherTower weatherTower) {
 		this.weatherTower = weatherTower;
 		this.weatherTower.register(this);
-		System.out.println("Tower says: Helicopter#" + this.name + "(" + this.id + ")" + " registered to weather tower.");
+		Simulator.writer.println("Tower says: Helicopter#" + this.name + "(" + this.id + ")" + " registered to weather tower.");
 	}
 
 }

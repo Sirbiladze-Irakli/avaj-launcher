@@ -4,10 +4,7 @@ import ru.jormond.avaj_launcher.aircraft.AircraftFactory;
 import ru.jormond.avaj_launcher.exceptions.SimulationException;
 import ru.jormond.avaj_launcher.exceptions.ValidationException;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 
 public class Simulator {
@@ -17,6 +14,7 @@ public class Simulator {
     private static final int LONGITUDE = 2;
     private static final int LATITUDE = 3;
     private static final int HEIGHT = 4;
+    public static PrintWriter writer;
 
     public static void main(String[] args) {
         if (args.length == 1) {
@@ -24,8 +22,14 @@ public class Simulator {
             String currentLine;
             String aircraft[];
             BufferedReader bufferedReader;
+            File simulationFile = new File("simulation.txt");
             WeatherTower weatherTower = new WeatherTower();
 
+            try {
+                writer = new PrintWriter(simulationFile);
+            } catch (FileNotFoundException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
             try {
                 bufferedReader = new BufferedReader(new FileReader(new File(args[0])));
                 simulationTimes = Integer.parseInt(bufferedReader.readLine());  // Первой строкой достаем время симуляции
@@ -43,6 +47,7 @@ public class Simulator {
             while (simulationTimes-- > 0) {
                 weatherTower.changeWeather();
             }
+            writer.close();
         }
     }
 

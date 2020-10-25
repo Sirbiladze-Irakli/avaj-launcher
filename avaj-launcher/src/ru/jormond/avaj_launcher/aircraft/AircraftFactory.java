@@ -1,6 +1,7 @@
 package ru.jormond.avaj_launcher.aircraft;
 
 import ru.jormond.avaj_launcher.Flyable;
+import ru.jormond.avaj_launcher.Simulator;
 import ru.jormond.avaj_launcher.exceptions.SimulationException;
 import ru.jormond.avaj_launcher.exceptions.ValidationException;
 
@@ -19,13 +20,13 @@ public class AircraftFactory {
 			height = 100;
 
 		if (type.equalsIgnoreCase(AircraftTypes.BALLOON.value)) {
-			System.out.println(type + " " + name + " has been created!");
+			Simulator.writer.println(type + " " + name + " has been created!");
 			return new Balloon(name, new Coordinates(longitude, latitude, height));
 		} else if (type.equalsIgnoreCase(AircraftTypes.HELICOPTER.value)) {
-			System.out.println(type + " " + name + " has been created!");
+			Simulator.writer.println(type + " " + name + " has been created!");
 			return new Helicopter(name, new Coordinates(longitude, latitude, height));
 		} else if (type.equalsIgnoreCase(AircraftTypes.JETPLANE.value)) {
-			System.out.println(type + " " + name + " has been created!");
+			Simulator.writer.println(type + " " + name + " has been created!");
 			return new JetPlane(name, new Coordinates(longitude, latitude, height));
 		} else {
 			throw new ValidationException("Error: non-existent aviation");
