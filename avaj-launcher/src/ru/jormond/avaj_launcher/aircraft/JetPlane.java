@@ -1,7 +1,7 @@
 package ru.jormond.avaj_launcher.aircraft;
 
 import ru.jormond.avaj_launcher.Flyable;
-import ru.jormond.avaj_launcher.tower.WeatherTower;
+import ru.jormond.avaj_launcher.WeatherTower;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,11 +11,11 @@ public class JetPlane extends Aircraft implements Flyable {
 	private WeatherTower weatherTower;
 	private Map<String, String> message = new HashMap<>() {
 		{
-			put("SUN", "SUN");
-			put("RAIN", "RAIN");
-			put("FOG", "FOG");
-			put("SNOW", "SNOW");
-			put("LANDED", "LANDED");
+			put("SUN", "The sun is shining overboard. beautiful view.");
+			put("RAIN", "How good it is to be on the plane in this rainy weather.");
+			put("FOG", "How can you fly at such speed without seeing anything.");
+			put("SNOW", "Can the plane freeze in snowy weather?");
+			put("LANDED", "Well, here we are.");
 		}
 	};
 
@@ -32,10 +32,10 @@ public class JetPlane extends Aircraft implements Flyable {
 			System.out.println("Current coordinates: Longtitude: [" + this.coordinates.getLongitude()
 					+ "] Latitude: [" + this.coordinates.getLatitude()
 					+ "] Height: [" + this.coordinates.getHeight() + "]");
+			this.weatherTower.unregister(this);
+			System.out.println("Tower says: JetPlane#" + this.name + "(" + this.id + ")"
+					+ " unregistered from weather tower.");
 		}
-		this.weatherTower.unregister(this);
-		System.out.println("Tower says: JetPlane#" + this.name + "(" + this.id + ")"
-				+ " unregistered from weather tower.");
 	}
 
 	// Начинаем следить за метеорологической башней

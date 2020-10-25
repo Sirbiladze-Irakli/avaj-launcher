@@ -1,6 +1,5 @@
-package ru.jormond.avaj_launcher.tower;
+package ru.jormond.avaj_launcher;
 
-import ru.jormond.avaj_launcher.WeatherProvider;
 import ru.jormond.avaj_launcher.aircraft.Coordinates;
 
 // Метеорологическая башня
@@ -12,7 +11,7 @@ public class WeatherTower extends Tower {
 	}
 
 	// меняем погоду
-	void changeWeather() {
+	public void changeWeather() {
 		this.conditionChanged();
 	}
 }

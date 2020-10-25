@@ -16,7 +16,7 @@ public class Aircraft {
 	// Координаты Воздушного судна
 	protected Coordinates coordinates;
 	// Общий счетчик идентификаторов
-	private	long idCounter  = 0;
+	private static long idCounter  = 0;
 	/*
 	 *	Изменение положения в зависимости от погоды
 	 *	Первое значение долгота(Longitude)
@@ -41,6 +41,7 @@ public class Aircraft {
 	protected Aircraft(String name, Coordinates coordinates) {
 		this.name = name;
 		this.coordinates = coordinates;
+		this.id = this.nextId();
 	}
 
 	private long nextId() {
@@ -88,11 +89,14 @@ public class Aircraft {
 		if (height > 100)
 			height = 100;
 
+		if (height <= 0) {
+			height = 0;
+			weather = "LANDED";
+		}
+
 		this.coordinates = new Coordinates(this.coordinates.getLongitude() + changePosition[LONGITUDE],
 				this.coordinates.getLatitude() + changePosition[LATITUDE], height);
 
-		if (height <= 0)
-			return "LANDED";
 		return weather;
 	}
 

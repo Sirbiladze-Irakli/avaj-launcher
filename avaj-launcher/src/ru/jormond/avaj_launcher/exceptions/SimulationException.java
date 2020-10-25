@@ -1,4 +1,4 @@
-package ru.jormond.avaj_launcher;
+package ru.jormond.avaj_launcher.exceptions;
 
 public class SimulationException extends Exception {
 
@@ -7,6 +7,10 @@ public class SimulationException extends Exception {
 	}
 
 	public SimulationException(String exception) {
+		super(exception);
+	}
+
+	public SimulationException(Throwable exception) {
 		super(exception);
 	}
 }

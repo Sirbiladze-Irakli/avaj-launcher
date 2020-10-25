@@ -1,13 +1,14 @@
 package ru.jormond.avaj_launcher.aircraft;
 
 import ru.jormond.avaj_launcher.Flyable;
-import ru.jormond.avaj_launcher.SimulationException;
+import ru.jormond.avaj_launcher.exceptions.SimulationException;
+import ru.jormond.avaj_launcher.exceptions.ValidationException;
 
 // Фабрика по созданию авиации. Реализация паттерна (Factory Method)
 public class AircraftFactory {
 
 	// Метод создания авиации
-	public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height) throws SimulationException {
+	public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height) throws SimulationException, ValidationException {
 
 		// Если попадаются отрицательные координаты то кидаем исключение
 		if (longitude < 0 || latitude < 0 || height < 0)
@@ -26,7 +27,8 @@ public class AircraftFactory {
 		} else if (type.equalsIgnoreCase(AircraftTypes.JETPLANE.value)) {
 			System.out.println(type + " " + name + " has been created!");
 			return new JetPlane(name, new Coordinates(longitude, latitude, height));
+		} else {
+			throw new ValidationException("Error: non-existent aviation");
 		}
-		return null;
 	}
 }
