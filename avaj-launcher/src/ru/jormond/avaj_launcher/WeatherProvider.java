@@ -14,7 +14,7 @@ public class WeatherProvider {
 
 	// Статический метод при помощи которого получаем доступ к объекту
 	public static WeatherProvider getProvider() {
-		return weatherProvider;
+		return WeatherProvider.weatherProvider;
 	}
 
 	// Получаем информацию по погоде в конкретных координатах
