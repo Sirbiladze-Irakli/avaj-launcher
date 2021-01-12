@@ -1,6 +1,6 @@
-package ru.jormond.avaj_launcher;
+package ru.jormond.avajlauncher;
 
-import ru.jormond.avaj_launcher.aircraft.Coordinates;
+import ru.jormond.avajlauncher.aircraft.Coordinates;
 
 // Источник информации о погоде. Он у нас в единственном экземпляре (Singleton)
 public class WeatherProvider {

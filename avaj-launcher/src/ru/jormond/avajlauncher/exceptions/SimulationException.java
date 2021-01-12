@@ -1,4 +1,4 @@
-package ru.jormond.avaj_launcher.exceptions;
+package ru.jormond.avajlauncher.exceptions;
 
 public class SimulationException extends Exception {
 

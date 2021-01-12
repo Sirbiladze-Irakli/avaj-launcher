@@ -1,4 +1,4 @@
-package ru.jormond.avaj_launcher;
+package ru.jormond.avajlauncher;
 
 import java.util.ArrayList;
 

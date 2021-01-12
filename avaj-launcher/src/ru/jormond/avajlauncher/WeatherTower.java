@@ -1,6 +1,6 @@
-package ru.jormond.avaj_launcher;
+package ru.jormond.avajlauncher;
 
-import ru.jormond.avaj_launcher.aircraft.Coordinates;
+import ru.jormond.avajlauncher.aircraft.Coordinates;
 
 // Метеорологическая башня
 public class WeatherTower extends Tower {

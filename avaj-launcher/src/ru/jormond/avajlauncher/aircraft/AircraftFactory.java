@@ -1,9 +1,9 @@
-package ru.jormond.avaj_launcher.aircraft;
+package ru.jormond.avajlauncher.aircraft;
 
-import ru.jormond.avaj_launcher.Flyable;
-import ru.jormond.avaj_launcher.Simulator;
-import ru.jormond.avaj_launcher.exceptions.SimulationException;
-import ru.jormond.avaj_launcher.exceptions.ValidationException;
+import ru.jormond.avajlauncher.Flyable;
+import ru.jormond.avajlauncher.Simulator;
+import ru.jormond.avajlauncher.exceptions.SimulationException;
+import ru.jormond.avajlauncher.exceptions.ValidationException;
 
 // Фабрика по созданию авиации. Реализация паттерна (Factory Method)
 public class AircraftFactory {

@@ -1,4 +1,4 @@
-package ru.jormond.avaj_launcher.aircraft;
+package ru.jormond.avajlauncher.aircraft;
 
 // Базовый класс для всей авиации
 public class Aircraft {

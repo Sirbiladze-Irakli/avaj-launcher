@@ -1,8 +1,8 @@
-package ru.jormond.avaj_launcher.aircraft;
+package ru.jormond.avajlauncher.aircraft;
 
-import ru.jormond.avaj_launcher.Flyable;
-import ru.jormond.avaj_launcher.Simulator;
-import ru.jormond.avaj_launcher.WeatherTower;
+import ru.jormond.avajlauncher.Flyable;
+import ru.jormond.avajlauncher.Simulator;
+import ru.jormond.avajlauncher.WeatherTower;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ import java.util.Map;
 public class JetPlane extends Aircraft implements Flyable {
 
 	private WeatherTower weatherTower;
-	private Map<String, String> message = new HashMap<>() {
+	private Map<String, String> message = new HashMap<String, String>() {
 		{
 			put("SUN", "The sun is shining overboard. beautiful view.");
 			put("RAIN", "How good it is to be on the plane in this rainy weather.");
